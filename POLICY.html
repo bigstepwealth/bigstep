@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health Insurance Policy Checklist | BIG STEP</title>
+<meta name="description" content="A practical health insurance due-diligence checklist for individuals and families in India. Review coverage, exclusions, waiting periods, claims and policy wording.">
+<style>
+:root{--ink:#10243f;--muted:#687b94;--gold:#cda454;--line:#dfe6ee;--soft:#f6f7f9;--cream:#f5f3eb;--green:#137e68}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fff;line-height:1.6}
+a{color:inherit}
+.container{width:min(1190px,calc(100% - 48px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.brand strong{font-size:32px;font-weight:850;letter-spacing:-1.3px}
+.brand span{margin-top:7px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:3px}
+.navlinks{display:flex;align-items:center;gap:30px}
+.navlinks a{text-decoration:none;color:#40536c;font-size:16px;font-weight:550}
+.navlinks a:hover{color:var(--gold)}
+.navlinks .contact{background:var(--ink);color:white;border-radius:8px;padding:13px 19px}
+.hero{background:var(--cream);padding:70px 0 64px}
+.eyebrow{text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:800;font-size:13px;margin:0 0 18px}
+h1{font-size:clamp(38px,5vw,62px);line-height:1.05;letter-spacing:-2.2px;max-width:900px;margin:0 0 22px}
+.hero p{font-size:19px;color:var(--muted);max-width:800px;margin:0}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{border:1px solid var(--line);border-radius:8px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:white}
+.btn.secondary{background:white;color:var(--ink)}
+main{padding:44px 0 80px}
+.summary{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:24px}
+.summary h2{font-size:25px;letter-spacing:-.5px;margin:0 0 5px}
+.summary p{margin:0;color:var(--muted)}
+.progress-card{min-width:220px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:white}
+.progress-top{display:flex;justify-content:space-between;gap:16px;font-size:13px;font-weight:750}
+.progress-track{height:7px;background:#e9edf2;border-radius:20px;overflow:hidden;margin-top:11px}
+.progress-fill{height:100%;width:0;background:var(--green);transition:width .2s}
+.tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:25px 0}
+.search{flex:1;min-width:240px;padding:13px 15px;border:1px solid var(--line);border-radius:9px;font:inherit;outline:none}
+.search:focus{border-color:var(--gold);box-shadow:0 0 0 3px #cda45422}
+.filter-note{font-size:13px;color:var(--muted)}
+.section-card{border:1px solid var(--line);border-radius:16px;margin:16px 0;overflow:hidden;background:white}
+.section-head{width:100%;border:0;background:#fff;padding:23px 25px;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;cursor:pointer;color:var(--ink)}
+.section-head:hover{background:#fbfcfd}
+.section-head h3{font-size:21px;line-height:1.3;margin:0}
+.section-head .meta{font-size:13px;color:var(--muted);margin-top:5px}
+.chevron{font-size:24px;color:var(--muted);transition:transform .2s}
+.section-card.open .chevron{transform:rotate(180deg)}
+.section-content{display:none;border-top:1px solid var(--line);padding:8px 25px 24px}
+.section-card.open .section-content{display:block}
+.group{padding-top:17px}
+.group h4{font-size:16px;margin:0 0 12px}
+.checkitem{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #eef1f5;color:#40536c}
+.checkitem:last-child{border-bottom:0}
+.checkitem input{width:18px;height:18px;accent-color:var(--green);flex:0 0 auto;margin-top:4px;cursor:pointer}
+.checkitem span{flex:1}
+.checkitem.done span{text-decoration:line-through;color:#8995a5}
+.empty{display:none;text-align:center;padding:35px;color:var(--muted)}
+.matrix{margin-top:45px}
+.matrix h2{font-size:30px;letter-spacing:-.8px;margin-bottom:8px}
+.matrix p{color:var(--muted);margin-top:0}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:800px}
+th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:11px 12px;text-align:left;font-size:14px}
+th{background:#f5f7fa;color:var(--ink)}
+td:first-child{font-weight:650;min-width:230px}
+td input{width:100%;min-width:130px;border:1px solid #dfe6ee;border-radius:6px;padding:8px;font:inherit}
+.glossary{margin-top:44px}
+.glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.term{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.term strong{display:block;margin-bottom:4px}
+.term p{color:var(--muted);font-size:14px;margin:0}
+.note{background:#f7f8fa;border-left:4px solid var(--gold);padding:18px 20px;margin-top:35px;border-radius:0 10px 10px 0;color:#52647b}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--muted);font-size:13px}
+footer .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:760px){.container{width:min(100% - 32px,1180px)}.nav{min-height:76px}.brand strong{font-size:27px}.brand span{font-size:9px;letter-spacing:2px}.navlinks{gap:14px}.navlinks a{font-size:13px}.navlinks a:not(.contact){display:none}.navlinks .contact{padding:10px 12px}.hero{padding:52px 0}.hero p{font-size:16px}.summary{grid-template-columns:1fr}.progress-card{min-width:0}.section-head{padding:19px 17px}.section-content{padding:5px 17px 20px}.section-head h3{font-size:18px}.glossary-grid{grid-template-columns:1fr}h1{letter-spacing:-1.2px}}
+@media print{header,.hero-actions,.tools,.btn,.note,footer{display:none!important}.hero{padding:20px 0;background:white}.container{width:100%}.section-content{display:block!important}.section-card{break-inside:avoid}.section-head{padding:10px 0}.section-card{border:0;border-bottom:1px solid #ccc}.section-content{border-top:0;padding:0 0 12px}.checkitem input{appearance:auto}.progress-card{display:none}.matrix{break-before:page}}
+</style>
+<style>
+/* BIG STEP mainpage navigation shared header — isolated so page content/styles remain unchanged */
+.bs-site-nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6e9ee;background:#fff;position:sticky;top:0;z-index:1000;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+.bs-site-nav-inner{width:100%;max-width:1250px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-sizing:border-box}
+.bs-site-brand{font-weight:900;letter-spacing:-1.5px;font-size:28px;line-height:.8;white-space:nowrap;color:#10243e;text-decoration:none;display:flex;flex-direction:column;flex:0 0 auto}
+.bs-site-brand small{display:block;font-size:10px;letter-spacing:3px;color:#c6a15b;margin-top:7px;line-height:1.2;font-weight:800}
+.bs-site-links{display:flex;align-items:center;gap:28px;font-size:14px;color:#42536a;white-space:nowrap;margin-left:auto;line-height:1.2}
+.bs-site-links a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;line-height:1.2}
+.bs-site-links a:hover{color:#c6a15b}
+.bs-site-links .bs-site-cta{background:#10243e;color:#fff;padding:0px 24px;border-radius:8px;font-weight:700;min-height:48px;box-sizing:border-box;font-size:14px;}
+.bs-site-links .bs-site-cta:hover{color:#fff;background:#17365d}
+@media(max-width:850px){.bs-site-nav{height:auto;min-height:78px}.bs-site-nav-inner{min-height:78px;padding:14px 20px;gap:16px}.bs-site-links{gap:14px;font-size:13px}.bs-site-links a:not(.bs-site-cta){display:none}.bs-site-links .bs-site-cta{padding:10px 16px;min-height:42px}}
+
+/* =========================================
+   FRAMEWORKS DROPDOWN – CLICK TO OPEN
+========================================= */
+
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Dropdown arrow */
+.dropdown-toggle::after {
+    content: "▾";
+    font-size: 11px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+/* Dropdown menu – Hidden by default */
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -12px;
+
+    min-width: 240px;
+    background: #ffffff;
+
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    box-shadow: 0 10px 25px rgba(16, 36, 62, 0.12);
+
+    padding: 8px 0;
+    z-index: 1000;
+
+    transform: translateY(6px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+/* Open dropdown */
+.dropdown.is-open .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Rotate arrow when open */
+.dropdown.is-open .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+    white-space: nowrap;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect on dropdown links */
+.dropdown-menu a:hover {
+    background: var(--cream);
+    color: var(--gold);
+}
+
+/* Keyboard accessibility */
+.dropdown-toggle:focus-visible,
+.dropdown-menu a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+</style>
+</head>
+<body>
+<nav class="bs-site-nav" aria-label="Main navigation">
+  <div class="bs-site-nav-inner">
+    <a class="bs-site-brand" href="mainpage.html">BIG STEP<small>GROWTH CREATES REAL VALUE</small></a>
+    <div class="bs-site-links">
+      <a href="mainpage.html#about">About</a>
+      <a href="mainpage.html#services">Services</a>
+
+      <!-- Frameworks Dropdown Menu -->
+<div class="dropdown" id="frameworksDropdown">
+
+    <a href="#" 
+       class="dropdown-toggle"
+       id="frameworksToggle"
+       role="button"
+       aria-haspopup="true"
+       aria-expanded="false">
+        Frameworks
+    </a>
+
+    <div class="dropdown-menu" id="frameworksMenu">
+
+        <a href="ACTIVE.html">
+            A.C.T.I.V.E Investment Approach
+        </a>
+
+        <a href="POLICY.html">
+            P.O.L.I.C.Y Checklist
+        </a>
+
+        <a href="LIFE_Access_Restricted.html">
+            L.I.F.E Retirement Planner
+        <span>&#128274;</span></a>
+
+    </div>
+
+</div>
+
+      <a href="HEATMAP.HTML">Heat Map</a>
+
+      <a href="mainpage.html#tools">Calculators</a>
+      <a href="mainpage.html#contact">Contact</a>
+      <a class="bs-site-cta" href="mainpage.html#contact">Get Started</a>
+    </div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">P.O.L.I.C.Y Checklist</p>
+    <h1>Choose with clarity.<br>Check beyond the premium.</h1>
+    <p>A practical checklist to help individuals and families compare health insurance policies, understand restrictions and ask better questions before buying.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#checklist">Start your checklist ↓</a>
+      <button class="btn secondary" type="button" onclick="window.print()">Print / Save as PDF</button>
+      <button class="btn secondary" type="button" id="resetChecks">Reset checklist</button>
+    </div>
+  </div>
+</section>
+<main class="container" id="checklist">
+  <div class="summary">
+    <div><h2>Your policy review checklist</h2><p>Tick an item after checking the actual policy wording or getting a clear answer in writing.</p></div>
+    <div class="progress-card"><div class="progress-top"><span>Review progress</span><span id="progressText">0%</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="filter-note" id="countText" style="margin-top:8px">0 items completed</div></div>
+  </div>
+  <div class="tools">
+    <input class="search" id="search" type="search" placeholder="Search checklist (e.g., co-payment, maternity, room rent)" aria-label="Search checklist">
+    <button class="btn secondary" type="button" id="expandAll">Expand all</button>
+    <button class="btn secondary" type="button" id="collapseAll">Collapse all</button>
+  </div>
+  <p class="filter-note">Tip: ask the insurer or advisor to point to the exact clause or annexure—not just the brochure or verbal explanation.</p>
+  <div id="sections"></div>
+  <div class="empty" id="empty">No checklist items match your search.</div>
+
+  <section class="matrix" id="comparison">
+    <h2>Compare up to three policies</h2>
+    <p>Enter the answers from each insurer’s documents. Use the table as a working comparison—not as a product recommendation.</p>
+    <div class="table-wrap"><table id="comparisonTable">
+      <thead><tr><th>Checklist item</th><th>Insurer / Plan A</th><th>Insurer / Plan B</th><th>Insurer / Plan C</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="hero-actions"><button class="btn secondary" type="button" id="exportComparison">Download comparison CSV</button></div>
+  </section>
+
+  <section class="glossary">
+    <p class="eyebrow">Quick reference</p><h2>Insurance terms, in plain language</h2>
+    <div class="glossary-grid" id="glossaryGrid"></div>
+  </section>
+  <div class="note"><strong>Important:</strong> This checklist is an educational due-diligence aid, not financial, medical or legal advice and not a recommendation of any particular insurer or policy. Policy terms and regulations can change. Confirm every benefit, waiting period, exclusion, tax treatment and regulatory clause against the insurer’s current official policy wording and applicable rules before purchase.</div>
+</main>
+<footer><div class="container footer-row"><span><strong>BIG STEP</strong> · Growth Creates Real Value</span><span>Health Insurance Buyer’s Checklist · India</span></div></footer>
+<script>
+const data = [{"title": "Core policy checklist", "groups": [{"title": "Sum insured & policy type", "items": ["Is the sum insured adequate for a major hospitalization in your city?", "Individual policy or family floater? Could one member’s claim reduce cover available to the rest of the family?", "Is this a base policy, top-up or super top-up? What deductible applies?", "Can the sum insured be increased later, and will fresh waiting periods apply to the increased portion?", "Does the plan offer a cumulative/no-claim bonus? What is its maximum cap?", "Does restoration refill exhausted cover in the same year, and does it apply to the same illness or only a different illness?"]}, {"title": "Waiting periods", "items": ["What is the initial waiting period, and what exceptions apply (such as accidents)?", "What is the pre-existing disease (PED) waiting period, and can it be reduced through an available option?", "What is the complete named list of specific-disease waiting periods and their durations?", "What is the maternity waiting period, if maternity cover is available?", "If porting, which waiting-period credits and bonuses will carry forward, and what is the application deadline?"]}, {"title": "Coverage inclusions", "items": ["How many days of pre-hospitalization and post-hospitalization expenses are covered?", "Are day-care procedures covered through an open-ended definition or a fixed list?", "Is domiciliary treatment covered, and under what conditions?", "Are AYUSH treatments covered, and what limits apply?", "Are organ-donor hospitalization expenses covered?", "What are the road and air ambulance limits?", "Are annual health check-ups covered even without a claim?", "Are modern treatments such as robotic surgery, oral chemotherapy, immunotherapy and stem-cell therapy covered, and subject to what caps?", "What limits or conditions apply to mental-health treatment and hospitalization?", "Are OPD consultations, diagnostics and teleconsultation included or available only as add-ons?", "Are preventive services such as adult vaccinations included in wellness benefits?"]}, {"title": "Cost-sharing, caps & exclusions", "items": ["Is there a room-rent or ICU-rent cap? If exceeded, can proportionate deductions affect the wider bill?", "Are there disease- or procedure-specific sub-limits for cataract, joint replacement, cardiac procedures or other treatments?", "Is there a co-payment on every claim, including a zone-based co-pay?", "Which non-medical items and consumables are excluded, and is a consumables add-on available?", "What permanent exclusions apply, including cosmetic procedures, obesity treatment, self-inflicted injury, war, treatment abroad or experimental treatment?"]}, {"title": "Network & claims", "items": ["Are suitable network hospitals near your home and your parents’ homes included?", "Is cashless treatment available at those hospitals, and what is the usual pre-authorization process?", "Does the insurer process claims directly or through a TPA? Who will be your contact?", "Review claim-settlement figures by both number of claims and amount settled, using the latest reliable published data.", "What is the reimbursement filing deadline and which documents are required?", "What is the grievance process, expected timeline and escalation route, including the Insurance Ombudsman?"]}, {"title": "Renewal & portability", "items": ["Is the policy renewable for life, subject to its terms?", "Can you port to another insurer while carrying eligible waiting-period credits and bonuses?", "Review the age-wise premium chart, not just the first-year quote.", "What is the renewal grace period, and how does it affect continuity, waiting periods and bonuses?", "What happens if the grace period is missed?"]}, {"title": "Family & life-stage needs", "items": ["What maternity benefits are available, what waiting period applies, and what are the normal-delivery and C-section limits?", "When does newborn cover begin, and what enrollment deadline applies?", "Are infertility treatments such as IVF/IUI covered, and is there a lifetime cap?", "Can a spouse, parent, in-law or other eligible dependent be added mid-term or only at renewal?", "Would a separate senior-citizen policy for parents be more suitable, and does it include co-payment?"]}, {"title": "Add-ons & riders", "items": ["Is a critical-illness benefit available separately from hospitalization cover?", "Is a personal-accident rider available for accidental death or disability?", "Can a consumables add-on reduce exposure to excluded non-medical items?", "Is there a zone-based premium option, and what restrictions come with it?", "Can the room category or zone be upgraded at renewal without fresh underwriting?", "Are wellness rewards or premium discounts offered, and what conditions apply?"]}, {"title": "Tax, premium & paperwork", "items": ["Check Section 80D eligibility and the applicable limits for self/family and senior-citizen parents against current tax rules.", "Confirm the applicable GST treatment on the quote and whether it is shown clearly.", "Confirm claim documents: discharge summary, bills, prescriptions, ID/KYC, bank details and any other stated requirements.", "Can claims be submitted and tracked digitally?", "What is the free-look period, and what deductions could apply to a cancellation refund?", "Are there policy-issuance fees or fees for mid-term changes beyond the headline premium?"]}]}, {"title": "Policy wording: clause-level review", "groups": [{"title": "Key definitions", "items": ["Hospital: verify the exact definition and facility requirements in the policy wording.", "Pre-existing disease: check whether the definition includes signs or symptoms before formal diagnosis.", "Day-care treatment: is the definition open-ended or limited to a named list?", "Any one illness: check how recurrences are treated and whether earlier sub-limits may apply.", "Reasonable and customary charges: ask how the insurer benchmarks charges by location and hospital category.", "Network hospital: check how changes to the network are communicated.", "Congenital disease: verify the policy’s exact treatment of internal and external congenital conditions."]}, {"title": "Sub-limits & payout caps", "items": ["Review the complete disease/procedure sub-limit table, including cataract, hernia, joint replacement, cardiac stenting and dialysis.", "Confirm room/ICU caps and the exact clause on proportionate deductions.", "Review the non-medical/consumables exclusion annexure.", "Check caps on doctor, surgeon and anesthetist fees.", "Check limits on modern treatments even where the base sum insured is high.", "Search the whole document for co-payment, including zone-based co-payment.", "Confirm absolute caps for ambulance and pre-/post-hospitalization expenses."]}, {"title": "Waiting periods, exclusions & disclosures", "items": ["Record the clause number and duration for every specific-disease waiting period.", "Record the exact PED waiting-period clause and duration.", "Read the complete permanent-exclusions list and note any wording that applies to your circumstances.", "Locate and verify the moratorium clause and its current wording in the policy document.", "Check the proposal form and material non-disclosure provisions. Disclose requested medical and lifestyle information accurately."]}, {"title": "Claims process fine print", "items": ["Record planned-admission and emergency claim-intimation timelines.", "Confirm whether pre-authorization is required for cashless claims and what happens if approval is delayed or declined.", "Review reimbursement document requirements and any clause allowing additional documents to be requested.", "Check the contribution clause if you hold more than one health policy.", "Understand the subrogation clause for accidents involving a potentially liable third party."]}, {"title": "Insurer rights & contract changes", "items": ["Check the insurer’s right to revise premiums, terms or sub-limits at renewal, and required notice.", "Check mid-term cancellation rights and refund terms.", "Verify the grace-period definition and its effect on continuity and no-claim bonus.", "Does a claim reduce the cumulative bonus or only pause its growth?", "Review the stated grounds for refusing portability.", "Verify free-look duration and deductions.", "Review arbitration/dispute-resolution terms and jurisdiction.", "Look for “as amended from time to time” wording affecting networks, sub-limit annexures or exclusions."]}, {"title": "Questions to ask the agent", "items": ["Please show me the exact clause number for room-rent capping.", "Please show me the annexure listing excluded non-medical items and consumables.", "Please show me the disease-wise sub-limit table for this exact plan variant.", "Please point out the moratorium and material non-disclosure clauses.", "Please provide the latest available claim-settlement data by number and by amount, with the source and reporting period."]}]}, {"title": "Gender-specific considerations", "groups": [{"title": "Women’s health", "items": ["Maternity cover: waiting period, delivery limits and whether it must be selected at initial purchase.", "Newborn cover: when it begins and the enrollment deadline.", "Pregnancy complications: whether they are included, separately limited or excluded.", "Infertility/assisted reproduction: IVF/IUI coverage and lifetime limits.", "Hysterectomy, ovarian cysts and fibroids: waiting-period and pre-existing-condition treatment.", "Breast and cervical cancer screening: preventive benefit or only treatment after diagnosis?", "Menopause-related care and osteoporosis management: covered, limited or excluded?", "Postnatal care and newborn vaccination: included or excluded?", "Can an individual policy with maternity benefits be purchased without a co-insured spouse?"]}, {"title": "Men’s health", "items": ["Cardiac care: waiting periods and sub-limits for angioplasty, bypass and stenting; consider whether separate critical-illness cover is relevant.", "Prostate conditions: waiting-period classification and applicable sub-limits.", "Hernia surgery: verify its exact specific-disease waiting period.", "Vasectomy: confirm whether voluntary sterilization is covered or excluded.", "Testicular conditions: check waiting-period lists and surgical exclusions.", "Age-related hormonal treatment: verify the policy wording rather than assume it is covered.", "Occupation: check whether occupational risk affects underwriting, premium or exclusions.", "Disclose smoking and alcohol use accurately and clarify how the insurer defines regular use."]}]}, {"title": "Glossary", "groups": [{"title": "Common terms", "items": ["Sum insured — the maximum amount payable under the policy, subject to its terms and limits.", "Family floater — one shared sum insured for covered family members.", "PED — pre-existing disease, as defined by the policy and applicable rules.", "NCB/cumulative bonus — a benefit that may increase cover or provide another bonus after eligible claim-free periods.", "Restoration benefit — a benefit that replenishes cover under specified conditions.", "TPA — third-party administrator that may handle claim administration for the insurer.", "Sub-limit — a maximum payable amount for a specified treatment or expense.", "Co-payment — the percentage of an eligible claim that the policyholder must pay.", "Room-rent capping — a limit on eligible room rent, which may affect claim calculations depending on the wording.", "Proportionate deduction — a reduction that may apply to eligible expenses when a room-category limit is exceeded, depending on the contract.", "Moratorium clause — a policy provision governing contestability after a specified period of continuous coverage; verify the current applicable wording.", "Portability — switching insurers under applicable rules while retaining eligible continuity credits.", "Zone-based premium — pricing tied to a defined location/zone and potentially related restrictions.", "Free-look period — the period after policy receipt in which cancellation may be requested subject to applicable terms.", "Day-care procedure — treatment that does not require 24-hour hospitalization due to medical or technological advances."]}]}];
+const comparisonRows = [
+"Sum insured offered","Individual / family floater","PED waiting period","Specific-disease waiting period","Maternity waiting period","Room-rent capping","Co-payment clause","Disease-wise sub-limits","Network hospitals in your city","Claim-settlement ratio (amount)","Restoration benefit","Cumulative bonus cap","Premium and tax details","Free-look period"
+];
+const glossary = [
+["Sum insured","The maximum amount payable under a policy, subject to its terms and limits."],
+["Family floater","One shared sum insured for the covered family members."],
+["PED","Pre-existing disease, as defined by the policy and applicable rules."],
+["No-claim / cumulative bonus","A benefit that may increase cover or provide another bonus after eligible claim-free periods."],
+["Restoration benefit","A benefit that replenishes cover under specified conditions."],
+["TPA","Third-party administrator that may handle claim administration for an insurer."],
+["Sub-limit","A maximum payable amount for a specified treatment or expense."],
+["Co-payment","The percentage of an eligible claim the policyholder must pay."],
+["Room-rent cap","A limit on eligible room rent; the wider claim impact depends on policy wording."],
+["Proportionate deduction","A possible reduction to eligible expenses if room-category limits are exceeded, depending on the contract."],
+["Moratorium clause","A provision governing contestability after a specified period of continuous coverage; check the current wording."],
+["Portability","Switching insurers under applicable rules while retaining eligible continuity credits."],
+["Zone-based premium","Pricing tied to a defined location or zone and potentially related restrictions."],
+["Free-look period","A period after receiving the policy when cancellation may be requested subject to applicable terms."],
+["Day-care procedure","Treatment that does not require 24-hour hospitalization due to medical or technological advances."]
+];
+const root = document.getElementById('sections');
+data.forEach((section,si)=>{
+ const card=document.createElement('section'); card.className='section-card'+(si===0?' open':'');
+ const itemCount=section.groups.reduce((n,g)=>n+g.items.length,0);
+ const head=document.createElement('button'); head.className='section-head';head.type='button';
+ head.innerHTML=`<div><h3>${section.title}</h3><div class="meta">${itemCount} review points</div></div><span class="chevron">⌄</span>`;
+ const content=document.createElement('div');content.className='section-content';
+ section.groups.forEach((group,gi)=>{
+  const groupEl=document.createElement('div');groupEl.className='group';
+  const h=document.createElement('h4');h.textContent=group.title;groupEl.appendChild(h);
+  group.items.forEach((item,ii)=>{
+   const label=document.createElement('label');label.className='checkitem';label.dataset.search=(section.title+' '+group.title+' '+item).toLowerCase();
+   const cb=document.createElement('input');cb.type='checkbox';cb.dataset.key=`${si}-${gi}-${ii}`;
+   const span=document.createElement('span');span.textContent=item;
+   cb.addEventListener('change',()=>{label.classList.toggle('done',cb.checked);updateProgress()});
+   label.append(cb,span);groupEl.appendChild(label);
+  });
+  content.appendChild(groupEl);
+ });
+ head.addEventListener('click',()=>card.classList.toggle('open'));
+ card.append(head,content);root.appendChild(card);
+});
+function updateProgress(){
+ const boxes=[...document.querySelectorAll('.checkitem input')];const done=boxes.filter(x=>x.checked).length;const pct=boxes.length?Math.round(done/boxes.length*100):0;
+ document.getElementById('progressText').textContent=pct+'%';document.getElementById('progressFill').style.width=pct+'%';
+ document.getElementById('countText').textContent=`${done} of ${boxes.length} items completed`;
+}
+document.getElementById('search').addEventListener('input',e=>{
+ const q=e.target.value.trim().toLowerCase();let visible=0;
+ document.querySelectorAll('.checkitem').forEach(item=>{const show=!q||item.dataset.search.includes(q);item.style.display=show?'flex':'none';if(show)visible++});
+ document.querySelectorAll('.section-card').forEach(card=>{
+  const groups=[...card.querySelectorAll('.group')];let any=false;
+  groups.forEach(g=>{const has=[...g.querySelectorAll('.checkitem')].some(x=>x.style.display!=='none');g.style.display=has?'block':'none';if(has)any=true});
+  card.style.display=any?'block':'none';if(q&&any)card.classList.add('open');
+ });
+ document.getElementById('empty').style.display=visible?'none':'block';
+});
+document.getElementById('expandAll').onclick=()=>document.querySelectorAll('.section-card').forEach(x=>x.classList.add('open'));
+document.getElementById('collapseAll').onclick=()=>document.querySelectorAll('.section-card').forEach(x=>x.classList.remove('open'));
+document.getElementById('resetChecks').onclick=()=>{
+ if(!confirm('Clear all checklist ticks? This cannot be undone.'))return;
+ document.querySelectorAll('.checkitem input').forEach(x=>{x.checked=false;x.closest('.checkitem').classList.remove('done')});updateProgress();
+};
+const tbody=document.querySelector('#comparisonTable tbody');
+comparisonRows.forEach((row,i)=>{
+ const tr=document.createElement('tr');const th=document.createElement('td');th.textContent=row;tr.appendChild(th);
+ for(let j=0;j<3;j++){const td=document.createElement('td');const input=document.createElement('input');input.type='text';input.setAttribute('aria-label',row+' insurer '+(j+1));input.placeholder='Enter details';td.appendChild(input);tr.appendChild(td)}
+ tbody.appendChild(tr);
+});
+document.getElementById('exportComparison').onclick=()=>{
+ const rows=[['Checklist item','Insurer / Plan A','Insurer / Plan B','Insurer / Plan C']];
+ [...tbody.rows].forEach(r=>rows.push([...r.cells].map(c=>c.querySelector('input')?c.querySelector('input').value:c.textContent)));
+ const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='big-step-health-insurance-comparison.csv';a.click();URL.revokeObjectURL(url);
+};
+glossary.forEach(([term,meaning])=>{const el=document.createElement('article');el.className='term';const strong=document.createElement('strong');strong.textContent=term;const p=document.createElement('p');p.textContent=meaning;el.append(strong,p);document.getElementById('glossaryGrid').appendChild(el)});
+updateProgress();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const dropdown = document.getElementById("frameworksDropdown");
+    const toggle = document.getElementById("frameworksToggle");
+
+    if (!dropdown || !toggle) return;
+
+    // Toggle dropdown on click
+    toggle.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const isOpen = dropdown.classList.toggle("is-open");
+
+        toggle.setAttribute("aria-expanded", isOpen);
+
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+
+        if (!dropdown.contains(event.target)) {
+
+            dropdown.classList.remove("is-open");
+
+            toggle.setAttribute("aria-expanded", "false");
+
+        }
+
+    });
+
+    // Close dropdown when pressing Escape
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            dropdown.classList.remove("is-open");
+
+            toggle.setAttribute("aria-expanded", "false");
+
+            toggle.focus();
+
+        }
+
+    });
+
+});
+</script>
+
+
+</body>
+</html>

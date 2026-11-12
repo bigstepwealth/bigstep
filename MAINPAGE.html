@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIG STEP — Wealth Management</title>
+<style>
+:root{
+  --ink:#10243e;
+  --ink2:#17365d;
+  --gold:#c6a15b;
+  --cream:#f7f5ef;
+  --white:#ffffff;
+  --muted:#65758b;
+  --line:#e6e9ee;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#fff}
+a{text-decoration:none;color:inherit}
+.container{max-width:1250px;margin:auto;padding:0 28px}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
+.brand{font-weight:900;letter-spacing:-1.5px;font-size:28px;line-height:.8}
+.brand small{display:block;font-size:10px;letter-spacing:3px;color:var(--gold);margin-top:4px}
+.navlinks{display:flex;gap:28px;font-size:14px;color:#42536a}
+.navlinks a:hover{color:var(--gold)}
+.btn{display:inline-block;padding:13px 21px;border-radius:8px;background:var(--gold);color:#fff;font-weight:700;font-size:14px}
+.btn.dark{background:var(--ink)}
+.hero{background:linear-gradient(135deg,#f8f6f0 0%,#fff 65%);padding:92px 0 100px}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:64px;line-height:1.02;letter-spacing:-3px;margin:18px 0 24px}
+.hero p{font-size:19px;line-height:1.7;color:var(--muted);max-width:610px}
+.actions{display:flex;gap:12px;margin-top:30px}
+.hero-card{background:var(--ink);color:#fff;border-radius:18px;padding:34px;box-shadow:0 25px 70px rgba(16,36,62,.18)}
+.hero-card .mini{font-size:11px;letter-spacing:2px;color:#bfc9d5;text-transform:uppercase}
+.hero-card h2{font-size:34px;margin:15px 0}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,.13);
+}
+
+.metric span:first-child {
+    color: #e2c47c;
+    font-weight: 800;
+}
+
+.metric span:last-child {
+    color: #ffffff;
+}
+
+section{padding:90px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:42px}
+.section-head h2{font-size:40px;letter-spacing:-1.5px;margin:10px 0}
+.section-head p{max-width:480px;color:var(--muted);line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid var(--line);border-radius:12px;padding:28px;background:#fff;min-height:180px}
+.card .num{color:var(--gold);font-weight:800;font-size:12px}
+.card h3{margin:20px 0 10px;font-size:21px}
+.card p{color:var(--muted);line-height:1.6;font-size:14px}
+.tools{background:var(--cream)}
+.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.tool{background:#fff;padding:23px;border-radius:10px;border:1px solid #ebe7dc}
+.tool strong{display:block;font-size:16px;margin-bottom:7px}
+.tool span{font-size:13px;color:var(--muted)}
+
+/* CTA Contact Section Styles */
+.cta{background:var(--ink);color:#fff;padding:85px 0;text-align:left;scroll-margin-top:70px;}
+.cta-header-center{text-align:center;max-width:800px;margin:0 auto 50px}
+.cta-header-center .eyebrow{margin-bottom:12px}
+.cta-header-center h2{font-size:48px;letter-spacing:-1.5px;margin:0 0 16px;color:#fff}
+.cta-header-center p{color:#bfc9d5;font-size:17px;line-height:1.7;margin:0}
+
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+.contact-stack{display:flex;flex-direction:column;gap:14px;align-items:flex-start;}
+.contact-item{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border-radius:8px;color:#fff;font-weight:600;font-size:15px;text-decoration:none;transition:opacity 0.2s;}
+.contact-item:hover{opacity:0.9;}
+
+/* Right Side AMFI Card Box with Image Logo */
+.cta-right{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;text-align:center;}
+.amfi-badge-box{background:#fff;width:100%;max-width:150px;height:auto;margin:0 auto 16px;padding:12px;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.amfi-badge-box img{width:100%;height:auto;display:block;object-fit:contain;}
+.cta-right h3{font-size:15px;color:#fff;margin:0 0 6px;line-height:1.4;}
+.cta-right .arn-text{color:var(--gold);font-weight:800;font-size:15px;margin-bottom:16px;}
+.cta-right p{font-size:12px;line-height:1.6;color:#aab6c5;margin:0 0 16px;}
+.regulatory-links{font-size:12px;color:#aab6c5;display:flex;flex-direction:column;gap:8px;text-align:left;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;}
+.regulatory-links a{color:#fff;font-weight:600;text-decoration:underline;}
+
+footer{background:#0b1a2d;color:#aab6c5;padding:35px 0;font-size:13px}
+.footer-row{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:850px){
+ .navlinks{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding:65px 0}
+ h1{font-size:48px}.cards{grid-template-columns:1fr}.tool-grid{grid-template-columns:1fr 1fr}
+ .section-head{display:block}.cta-header-center h2{font-size:35px}.cta-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:520px){.tool-grid{grid-template-columns:1fr}.container{padding:0 20px}.actions{flex-direction:column}.btn{text-align:center}}
+
+
+/* Calculator layout refined to match reference screenshot */
+#calculator-app{background:#fff;margin:0 -28px;padding:0 0 8px}
+#calculator-app .calc-hero{background:var(--cream);padding:34px 28px 42px;margin:0 0 0}
+#calculator-app .calc-hero .calc-eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:800}
+#calculator-app .calc-hero h2{font-size:42px;line-height:1.12;letter-spacing:-1.4px;color:var(--ink);margin:12px 0 16px}
+#calculator-app .calc-hero p{font-size:16px;line-height:1.7;color:var(--muted);max-width:820px;margin:0}
+#calculator-app .tabs{padding:0 28px;margin:0 auto 22px;max-width:1236px;padding-top:0;transform:translateY(0)}
+#calculator-app .panel{padding:0 28px;margin:0 auto;max-width:1236px}
+#calculator-app .layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+#calculator-app .box{padding:24px;min-width:0}
+#calculator-app .box h2{font-size:21px;letter-spacing:0;line-height:1.25;margin:0 0 20px}
+#calculator-app .control{grid-template-columns:minmax(0,1fr) 112px;gap:12px}
+#calculator-app input[type=range]{cursor:pointer}
+#calculator-app .result{padding:22px}
+#calculator-app .result strong{font-size:32px;line-height:1.25}
+#calculator-app .stat{padding:15px}
+#calculator-app .tablewrap{max-width:100%}
+#calculator-app .disclaimer{padding:0 28px;max-width:1236px;margin:25px auto 0}
+#calculator-app .panel{display:none}
+#calculator-app .panel.active{display:block}
+#calculator-app .panel section{padding:0}
+#calculator-app .panel{padding-top:0;padding-bottom:0}
+@media(max-width:800px){
+  #calculator-app{margin:0 -20px}
+  #calculator-app .calc-hero{padding:30px 20px 34px}
+  #calculator-app .calc-hero h2{font-size:34px}
+  #calculator-app .tabs{padding:0 20px;margin-bottom:18px}
+  #calculator-app .layout{grid-template-columns:1fr}
+  #calculator-app .panel{padding:0 20px}
+  #calculator-app .box{padding:20px}
+}
+@media(max-width:520px){
+  #calculator-app .control{grid-template-columns:minmax(0,1fr) 92px}
+  #calculator-app .result strong{font-size:27px}
+  #calculator-app .tabs{gap:7px}
+  #calculator-app .tab{padding:10px 11px;font-size:12px}
+}
+
+/* Embedded BIG STEP calculator styles */
+#calculator-app{--navy:#0c213b;--gold:#c9a45d;--cream:#f6f3ec;--muted:#68788c;--line:#e3e8ee;--green:#147d64;color:#17283b;font-family:Arial,sans-serif}
+#calculator-app *{box-sizing:border-box}
+#calculator-app :root{--navy:#0c213b;--gold:#c9a45d;--cream:#f6f3ec;--muted:#68788c;--line:#e3e8ee;--green:#147d64}
+#calculator-app a{color:inherit;text-decoration:none}
+#calculator-app .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+#calculator-app .tab{border:1px solid var(--line);background:white;border-radius:7px;padding:11px 14px;font-weight:bold;cursor:pointer}
+#calculator-app .tab.active{background:var(--navy);color:white}
+#calculator-app .panel{display:none}
+#calculator-app .panel.active{display:block}
+#calculator-app .layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#calculator-app .box{border:1px solid var(--line);border-radius:13px;padding:24px;background:#fff}
+#calculator-app .box h2{font-size:21px;color:var(--navy);margin:0 0 20px}
+#calculator-app .field{margin:0 0 20px}
+#calculator-app .fieldtop{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:9px}
+#calculator-app .field label{font-size:13px;font-weight:bold}
+#calculator-app .value{font-size:13px;font-weight:bold;background:#f4f6f8;border-radius:5px;padding:6px 8px}
+#calculator-app .control{display:grid;grid-template-columns:1fr 105px;gap:12px;align-items:center}
+#calculator-app input[type=range]{width:100%;accent-color:var(--gold)}
+#calculator-app input[type=number], #calculator-app input[type=date]{width:100%;padding:10px;border:1px solid #ccd5df;border-radius:6px;font:inherit}
+#calculator-app .result{background:var(--navy);color:white;border-radius:10px;padding:20px;margin-bottom:13px}
+#calculator-app .result span{display:block;font-size:12px;color:#c6d0dc}
+#calculator-app .result strong{display:block;font-size:31px;margin-top:8px;overflow-wrap:anywhere}
+#calculator-app .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#calculator-app .stat{background:#f6f7f9;border:1px solid var(--line);border-radius:8px;padding:15px}
+#calculator-app .stat span{display:block;color:var(--muted);font-size:12px}
+#calculator-app .stat b{display:block;margin-top:7px;color:var(--navy);font-size:17px;overflow-wrap:anywhere}
+#calculator-app .bar{height:12px;background:#e8edf2;border-radius:20px;overflow:hidden;display:flex;margin:18px 0 8px}
+#calculator-app .bar i:first-child{background:var(--gold)}
+#calculator-app .bar i:last-child{background:var(--green)}
+#calculator-app .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:16px}
+#calculator-app .tablewrap{overflow:auto;margin-top:18px}
+#calculator-app table{width:100%;border-collapse:collapse;font-size:12px}
+#calculator-app th, #calculator-app td{text-align:right;padding:9px;border-bottom:1px solid var(--line);white-space:nowrap}
+#calculator-app th:first-child, #calculator-app td:first-child{text-align:left}
+#calculator-app th{color:var(--muted)}
+#calculator-app button.action{border:0;background:var(--gold);color:white;font-weight:bold;padding:12px 17px;border-radius:6px;cursor:pointer}
+#calculator-app .cashflow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-bottom:9px}
+#calculator-app .cashflow button{border:0;background:#f7e9e9;color:#a33;padding:8px 12px;border-radius:5px;cursor:pointer}
+#calculator-app .disclaimer{font-size:11px;line-height:1.6;color:#78879a;margin-top:25px}
+@media(max-width:800px){
+#calculator-app .layout{grid-template-columns:1fr}
+#calculator-app .links{display:none}
+#calculator-app h1{font-size:34px}
+#calculator-app .box{padding:18px}
+}
+@media(max-width:460px){
+#calculator-app .control{grid-template-columns:1fr 90px}
+#calculator-app .result strong{font-size:27px}
+#calculator-app .cashflow{grid-template-columns:1fr 1fr}
+#calculator-app .cashflow button{grid-column:2;justify-self:end}
+}
+
+/* Header-only alignment correction */
+nav {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+nav > .container {
+  width: 100%;
+  max-width: 1250px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between !important;
+  gap: 24px;
+  box-sizing: border-box;
+}
+nav .brand {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap;
+}
+nav .brand small { line-height: 1.2; }
+nav .navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+  margin-left: auto;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+nav .navlinks > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+nav .navlinks > .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  margin: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+@media (max-width: 850px) {
+  nav { height: auto; min-height: 78px; }
+  nav > .container { min-height: 78px; padding: 14px 20px; gap: 16px; }
+}
+
+/* Our Belief section styling */
+.belief-section { background: #fff; padding: 90px 0; }
+.belief-section .belief-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+.belief-section .belief-copy .eyebrow { margin-bottom: 26px; }
+.belief-section .belief-copy h2 { font-size: 40px; line-height: 1.12; letter-spacing: -1.6px; margin: 0 0 26px; color: var(--ink); }
+.belief-section .belief-copy p { font-size: 16px; line-height: 1.7; color: var(--muted); margin: 0 0 22px; }
+.belief-section .belief-list { display: grid; gap: 16px; }
+.belief-section .belief-item { border: 1px solid var(--line); border-radius: 16px; padding: 20px 30px; background: #fff; }
+.belief-section .belief-item h3 { font-size: 16px; line-height: 1.3; margin: 0 0 7px; color: var(--ink); }
+.belief-section .belief-item p { font-size: 14px; line-height: 1.5; margin: 0; color: var(--muted); }
+@media (max-width: 850px) {
+  .belief-section { padding: 65px 0; }
+  .belief-section .belief-grid { grid-template-columns: 1fr; gap: 30px; }
+  .belief-section .belief-copy h2 { font-size: 36px; }
+  .belief-section .belief-copy p { font-size: 16px; }
+  .belief-section .belief-item { padding: 22px; }
+}
+
+/* =========================================
+   FRAMEWORKS DROPDOWN – CLICK TO OPEN
+========================================= */
+
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Dropdown arrow */
+.dropdown-toggle::after {
+    content: "▾";
+    font-size: 11px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+/* Dropdown menu – Hidden by default */
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -12px;
+
+    min-width: 240px;
+    background: #ffffff;
+
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    box-shadow: 0 10px 25px rgba(16, 36, 62, 0.12);
+
+    padding: 8px 0;
+    z-index: 1000;
+
+    transform: translateY(6px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+/* Open dropdown */
+.dropdown.is-open .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Rotate arrow when open */
+.dropdown.is-open .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+    white-space: nowrap;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect on dropdown links */
+.dropdown-menu a:hover {
+    background: var(--cream);
+    color: var(--gold);
+}
+
+/* Keyboard accessibility */
+.dropdown-toggle:focus-visible,
+.dropdown-menu a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="container" style="display:flex;width:100%;align-items:center;justify-content:space-between">
+    <a class="brand" href="#">BIG STEP<small>GROWTH CREATES REAL VALUE</small></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+
+      <!-- Frameworks Dropdown Menu -->
+      <div class="dropdown" id="frameworksDropdown">
+        <a href="#" class="dropdown-toggle" id="frameworksToggle" role="button" aria-haspopup="true" aria-expanded="false">Frameworks</a>
+
+        <div class="dropdown-menu" id="frameworksMenu">
+          <a href="ACTIVE.html">A.C.T.I.V.E Investment Approach</a>
+          <a href="POLICY.html">P.O.L.I.C.Y Checklist</a>
+          <a href="LIFE_Access_Restricted.html">L.I.F.E Retirement Planner <span>&#128274;</span></a>
+        </div>
+
+      </div>
+
+      <a href="HEATMAP.HTML">Heat Map</a>
+
+      <a href="#tools">Calculators</a>
+      <a href="#contact">Contact</a>
+      <a class="btn dark" href="#contact">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">Private Wealth Management</div>
+   <h1>Take the next <span style="color:var(--gold)">BIG STEP</span> toward your financial future.</h1>
+   <p>Invest with purpose. Protect what matters. Plan for tomorrow. Grow with Discipline. Build wealth through a structured, goal-based approach.</p>
+   <p>“Your Goals. Our Guidance. A BIGGER Future.”</p>
+   <div class="actions"><a class="btn" href="#contact">Start Your Journey</a><a class="btn dark" href="#services">Explore Services</a></div>
+  </div>
+  <div class="hero-card">
+   <div class="mini">OUR FRAMEWORKS</div>
+   <h2>Think Smart. Build BIG.</h2>
+   <div class="metric"><span>A.C.T.I.V.E Investment Approach</span>
+      <span><a class="btn dark" href="ACTIVE.html" style="font-size: 12px;">&rarr;</a></span>
+    </div>
+   <div class="metric"><span>P.O.L.I.C.Y Checklist</span>
+      <span><a class="btn dark" href="POLICY.html" style="font-size: 12px;">&rarr;</a></span>
+    </div>
+   <div class="metric"><span>L.I.F.E Retirement Planner</span>
+      <span><a class="btn dark" href="LIFE_Access_Restricted.html" style="font-size: 12px;">&#128274;</a></span>
+    </div>
+  </div>
+ </div>
+</header>
+
+<!---For Self Reference: Left arrow ($\leftarrow$): &larr; or &#8592;Up arrow ($\uparrow$): &uarr; or &#8593;Down arrow ($\downarrow$): &darr; or &#8595; --->
+
+<section id="about">
+ <div class="container">
+  <div class="section-head">
+   <div><div class="eyebrow">About BIG STEP</div><h2>Helping people take smarter financial steps.</h2></div>
+   <p>BIG STEP is being built as a modern private wealth management platform focused on clarity, discipline, and long-term wealth creation. We make investing and financial planning easier to understand, easier to track, and easier to act on.</p>
+  </div>
+  <div class="cards">
+   <div class="card"><div class="num">01</div><h3>Goal-Driven Financial Planning</h3><p>We believe every financial decision should have a purpose. We help individuals and families work toward their important milestones through structured financial planning and investment solutions.</p></div>
+   <div class="card"><div class="num">02</div><h3>Complete Financial Well-Being</h3><p>From wealth creation and investment opportunities to insurance and retirement planning, we bring essential financial solutions together to help you prepare for life's opportunities and uncertainties.</p></div>
+   <div class="card"><div class="num">03</div><h3>Long-Term Wealth & Financial Freedom</h3><p>Building wealth is a journey, not a quick win. Our focus is on encouraging financial discipline, informed decisions, and long-term thinking to help you move closer to financial independence.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="belief" class="belief-section">
+  <div class="container">
+    <div class="belief-grid">
+      <div class="belief-copy">
+        <div class="eyebrow">Our Belief</div>
+        <h2><span style="color:var(--gold)">G</span>rowth <span style="color:var(--gold)">C</span>reates <span style="color:var(--gold)">R</span>eal <span style="color:var(--gold)">V</span>alue.</h2>
+        <p>Money decisions become more meaningful when they are connected to real-life goals. BIG STEP is designed to bring investments, protection and financial planning into one simple experience.</p>
+        <p>The platform will combine human guidance with useful calculators, educational content and investor tools.</p>
+      </div>
+      <div class="belief-list">
+        <article class="belief-item">
+          <h3>GROWTH With Purpose</h3>
+          <p>Know what you want to achieve. | Start with your financial objectives, then identify solutions that align with your needs.</p>
+        </article>
+        <article class="belief-item">
+          <h3>CREATES Financial Clarity</h3>
+          <p>Understand your financial choices. | Make financial decisions easier to understand through clear information and simpler choices.</p>
+        </article>
+        <article class="belief-item">
+          <h3>REAL Progress Through Discipline</h3>
+          <p>Take consistent, informed action. | Stay focused on sound decisions and consistent action rather than short-term emotions.</p>
+        </article>
+        <article class="belief-item">
+          <h3>VALUE Beyond Wealth</h3>
+          <p>Work toward lasting financial well-being. | Look beyond numbers to financial independence, lasting security and the freedom to live life on your terms.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="cream">
+ <div class="container">
+  <div class="section-head">
+   <div><div class="eyebrow">What we offer</div><h2>Financial solutions, connected.</h2></div>
+   <p>A single platform for investments, protection and long-term financial planning.</p></div>
+  <div class="cards">
+   <div class="card"><div class="num">INVESTMENTS</div><h3>Mutual Funds</h3><p>Start Small. Invest Smart. Build Wealth. Goal-based investment planning and SIP strategies.</p></div>
+   <div class="card"><div class="num">FIXED INCOME</div><h3>Bonds & FDs</h3><p>Stability Today. Confidence for Tomorrow. Explore fixed-income opportunities as part of a diversified plan.</p></div>
+   <div class="card"><div class="num">PLANNING</div><h3>Retirement</h3><p>Retire from Work, Not from Your Dreams! Build a plan for income, inflation and long-term financial independence.</p></div>
+   <div class="card"><div class="num">HEALTH PROTECTION</div><h3>Health Insurance</h3><p>Secure your family against unexpected medical expenses with health insurance solutions from HDFC ERGO. Get expert assistance in choosing coverage that suits your needs & budget.</p></div>
+   <div class="card"><div class="num">LIFE PROTECTION</div><h3>Term Insurance</h3><p>With HDFC Life Term Insurance, help safeguard your loved ones against life’s uncertainties with financial protection tailored to your needs.</p></div>
+   <div class="card"><div class="num">ALTERNATIVES</div><h3>PMS / AIF / SIF</h3><p>Access alternative investment solutions where appropriate.</p></div>
+   <div class="card"><div class="num">LOANS</div><h3>Loan Against Mutual Funds</h3><p>Your investments can do more than build wealth — they can help you access funds when you need them.</p></div>
+   <div class="card"><div class="num">OVERSEAS</div><h3>GIFT City Investment Services</h3><p>Explore international investment opportunities through GIFT City, India's gateway to global financial markets.</p></div>
+   <div class="card"><div class="num">GOALS</div><h3>Goal Planning</h3><p>Translate important life goals into measurable financial targets.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="tools" class="tools">
+  <div class="container">
+    <div id="calculator-app">
+      <div class="calc-hero">
+        <div class="calc-eyebrow">BIG STEP Financial Tools</div>
+        <h2>Make your money measurable.</h2>
+        <p>Adjust the assumptions to explore investment growth, retirement needs, withdrawals and financial goals. All calculations run in your browser.</p>
+      </div>
+      <div class="tabs">
+<button class="tab active" data-tab="sip">SIP</button><button class="tab" data-tab="lump">Lumpsum</button><button class="tab" data-tab="swp">SWP</button><button class="tab" data-tab="ret">Retirement</button><button class="tab" data-tab="cagr">CAGR</button><button class="tab" data-tab="xirr">XIRR</button><button class="tab" data-tab="goal">Goal Planner</button><button class="tab" data-tab="infl">Inflation</button>
+</div>
+<section class="panel active" id="sip"><div class="layout"><div class="box"><h2>SIP Calculator</h2>
+<div class="field"><div class="fieldtop"><label>Monthly investment</label><span class="value" id="sipM_v"></span></div><div class="control"><input id="sipM" type="range" min="500" max="200000" step="500" value="10000"><input id="sipM_n" type="number" min="500" max="200000" step="500" value="10000"></div></div>
+<div class="field"><div class="fieldtop"><label>Expected annual return</label><span class="value" id="sipR_v"></span></div><div class="control"><input id="sipR" type="range" min="1" max="20" step=".5" value="12"><input id="sipR_n" type="number" min="1" max="20" step=".5" value="12"></div></div>
+<div class="field"><div class="fieldtop"><label>Investment period</label><span class="value" id="sipY_v"></span></div><div class="control"><input id="sipY" type="range" min="1" max="40" value="15"><input id="sipY_n" type="number" min="1" max="40" value="15"></div></div>
+<p class="note">Assumes contributions at each month-end and a constant monthly rate derived from the annual return.</p></div><div class="box"><h2>Your SIP projection</h2><div class="result"><span>Estimated future value</span><strong id="sipFV"></strong></div><div class="stats"><div class="stat"><span>Total invested</span><b id="sipInv"></b></div><div class="stat"><span>Estimated gains</span><b id="sipGain"></b></div></div><div class="bar"><i id="sipBI"></i><i id="sipBG"></i></div><div class="tablewrap"><table><thead><tr><th>Year</th><th>Invested</th><th>Estimated value</th></tr></thead><tbody id="sipTable"></tbody></table></div></div></div></section>
+<section class="panel" id="lump"><div class="layout"><div class="box"><h2>Lumpsum Calculator</h2>
+<div class="field"><div class="fieldtop"><label>One-time investment</label><span class="value" id="lA_v"></span></div><div class="control"><input id="lA" type="range" min="1000" max="10000000" step="1000" value="500000"><input id="lA_n" type="number" min="1000" max="10000000" step="1000" value="500000"></div></div>
+<div class="field"><div class="fieldtop"><label>Expected annual return</label><span class="value" id="lR_v"></span></div><div class="control"><input id="lR" type="range" min="1" max="20" step=".5" value="12"><input id="lR_n" type="number" min="1" max="20" step=".5" value="12"></div></div>
+<div class="field"><div class="fieldtop"><label>Investment period</label><span class="value" id="lY_v"></span></div><div class="control"><input id="lY" type="range" min="1" max="40" value="10"><input id="lY_n" type="number" min="1" max="40" value="10"></div></div></div><div class="box"><h2>Your lumpsum projection</h2><div class="result"><span>Estimated future value</span><strong id="lFV"></strong></div><div class="stats"><div class="stat"><span>Initial investment</span><b id="lInv"></b></div><div class="stat"><span>Estimated gains</span><b id="lGain"></b></div></div><div class="bar"><i id="lBI"></i><i id="lBG"></i></div><div class="tablewrap"><table><thead><tr><th>Year</th><th>Value</th><th>Gain</th></tr></thead><tbody id="lTable"></tbody></table></div></div></div></section>
+<section class="panel" id="swp"><div class="layout"><div class="box"><h2>SWP Calculator</h2>
+<div class="field"><div class="fieldtop"><label>Starting corpus</label><span class="value" id="sC_v"></span></div><div class="control"><input id="sC" type="range" min="100000" max="50000000" step="100000" value="5000000"><input id="sC_n" type="number" min="100000" max="50000000" step="100000" value="5000000"></div></div>
+<div class="field"><div class="fieldtop"><label>Monthly withdrawal</label><span class="value" id="sW_v"></span></div><div class="control"><input id="sW" type="range" min="1000" max="500000" step="1000" value="50000"><input id="sW_n" type="number" min="1000" max="500000" step="1000" value="50000"></div></div>
+<div class="field"><div class="fieldtop"><label>Expected annual return</label><span class="value" id="sR_v"></span></div><div class="control"><input id="sR" type="range" min="0" max="15" step=".5" value="7"><input id="sR_n" type="number" min="0" max="15" step=".5" value="7"></div></div>
+<div class="field"><div class="fieldtop"><label>Withdrawal period (years)</label><span class="value" id="sY_v"></span></div><div class="control"><input id="sY" type="range" min="1" max="50" value="25"><input id="sY_n" type="number" min="1" max="50" value="25"></div></div>
+<div class="field"><div class="fieldtop"><label>Annual increase in withdrawal</label><span class="value" id="sI_v"></span></div><div class="control"><input id="sI" type="range" min="0" max="12" step=".5" value="0"><input id="sI_n" type="number" min="0" max="12" step=".5" value="0"></div></div></div>
+<div class="box"><h2>Your withdrawal projection</h2><div class="result"><span>Estimated ending balance</span><strong id="sEnd"></strong></div><div class="stats"><div class="stat"><span>Total withdrawn</span><b id="sTotal"></b></div><div class="stat"><span>Corpus status</span><b id="sStatus"></b></div></div><p class="note" id="sNote"></p><div class="tablewrap"><table><thead><tr><th>Year</th><th>Opening</th><th>Withdrawn</th><th>Closing</th></tr></thead><tbody id="sTable"></tbody></table></div></div></div></section>
+<section class="panel" id="ret"><div class="layout"><div class="box"><h2>Retirement Planner</h2>
+<div class="field"><div class="fieldtop"><label>Current monthly expenses</label><span class="value" id="rE_v"></span></div><div class="control"><input id="rE" type="range" min="5000" max="500000" step="1000" value="50000"><input id="rE_n" type="number" min="5000" max="500000" step="1000" value="50000"></div></div>
+<div class="field"><div class="fieldtop"><label>Years until retirement</label><span class="value" id="rY_v"></span></div><div class="control"><input id="rY" type="range" min="0" max="45" value="20"><input id="rY_n" type="number" min="0" max="45" value="20"></div></div>
+<div class="field"><div class="fieldtop"><label>Years in retirement</label><span class="value" id="rD_v"></span></div><div class="control"><input id="rD" type="range" min="5" max="45" value="30"><input id="rD_n" type="number" min="5" max="45" value="30"></div></div>
+<div class="field"><div class="fieldtop"><label>Inflation rate</label><span class="value" id="rI_v"></span></div><div class="control"><input id="rI" type="range" min="1" max="12" step=".5" value="6"><input id="rI_n" type="number" min="1" max="12" step=".5" value="6"></div></div>
+<div class="field"><div class="fieldtop"><label>Annual return during retirement</label><span class="value" id="rR_v"></span></div><div class="control"><input id="rR" type="range" min="1" max="15" step=".5" value="7"><input id="rR_n" type="number" min="1" max="15" step=".5" value="7"></div></div></div>
+<div class="box"><h2>Your retirement estimate</h2><div class="result"><span>Estimated corpus needed at retirement</span><strong id="rCorpus"></strong></div><div class="stats"><div class="stat"><span>Monthly expense at retirement</span><b id="rMonthly"></b></div><div class="stat"><span>First-year expenses</span><b id="rAnnual"></b></div></div><p class="note" id="rNote"></p><div class="tablewrap"><table><thead><tr><th>Year</th><th>Annual expense</th><th>Present value at retirement</th></tr></thead><tbody id="rTable"></tbody></table></div></div></div></section>
+<section class="panel" id="cagr"><div class="layout"><div class="box"><h2>CAGR Calculator</h2><div class="field"><label>Initial value (₹)</label><input id="cA" type="number" min=".01" value="100000"></div><div class="field"><label>Final value (₹)</label><input id="cB" type="number" min="0" value="143000"></div><div class="field"><label>Period (years)</label><input id="cY" type="number" min=".01" step=".1" value="3"></div><button class="action" id="cCalc">Calculate CAGR</button></div><div class="box"><h2>Your annualized return</h2><div class="result"><span>CAGR</span><strong id="cResult">—</strong></div><div class="stats"><div class="stat"><span>Total gain / loss</span><b id="cGain">—</b></div><div class="stat"><span>Total return</span><b id="cTotal">—</b></div></div><p class="note">CAGR is suitable for a single starting and ending value. For dated cash flows, use XIRR.</p></div></div></section>
+<section class="panel" id="xirr"><div class="layout"><div class="box"><h2>XIRR Calculator</h2><p class="note">Enter investments as negative values and proceeds/current portfolio value as positive values. Include the final portfolio value on its valuation date.</p><div id="flows"></div><button class="action" id="addFlow" style="margin:8px 0 16px">+ Add cash flow</button><br><button class="action" id="xCalc">Calculate XIRR</button></div><div class="box"><h2>Your annualized return</h2><div class="result"><span>XIRR</span><strong id="xResult">—</strong></div><div class="stats"><div class="stat"><span>Net cash flow</span><b id="xNet">—</b></div><div class="stat"><span>Entries</span><b id="xCount">—</b></div></div><p class="note" id="xNote">Add at least one negative and one positive cash flow.</p></div></div></section>
+<section class="panel" id="goal"><div class="layout"><div class="box"><h2>Goal Planner</h2>
+<div class="field"><div class="fieldtop"><label>Goal amount in today's money</label><span class="value" id="gA_v"></span></div><div class="control"><input id="gA" type="range" min="100000" max="100000000" step="100000" value="10000000"><input id="gA_n" type="number" min="100000" max="100000000" step="100000" value="10000000"></div></div>
+<div class="field"><div class="fieldtop"><label>Years to goal</label><span class="value" id="gY_v"></span></div><div class="control"><input id="gY" type="range" min="1" max="40" value="15"><input id="gY_n" type="number" min="1" max="40" value="15"></div></div>
+<div class="field"><div class="fieldtop"><label>Inflation rate</label><span class="value" id="gI_v"></span></div><div class="control"><input id="gI" type="range" min="0" max="12" step=".5" value="6"><input id="gI_n" type="number" min="0" max="12" step=".5" value="6"></div></div>
+<div class="field"><div class="fieldtop"><label>Expected annual return</label><span class="value" id="gR_v"></span></div><div class="control"><input id="gR" type="range" min="1" max="20" step=".5" value="12"><input id="gR_n" type="number" min="1" max="20" step=".5" value="12"></div></div>
+<div class="field"><div class="fieldtop"><label>Current savings for this goal</label><span class="value" id="gC_v"></span></div><div class="control"><input id="gC" type="range" min="0" max="50000000" step="50000" value="500000"><input id="gC_n" type="number" min="0" max="50000000" step="50000" value="500000"></div></div></div>
+<div class="box"><h2>Your goal plan</h2><div class="result"><span>Required monthly investment</span><strong id="gSIP"></strong></div><div class="stats"><div class="stat"><span>Future goal amount</span><b id="gFuture"></b></div><div class="stat"><span>Current savings future value</span><b id="gCFV"></b></div></div><p class="note" id="gNote"></p></div></div></section>
+<section class="panel" id="infl"><div class="layout"><div class="box"><h2>Inflation Calculator</h2>
+<div class="field"><div class="fieldtop"><label>Current amount / expense</label><span class="value" id="iA_v"></span></div><div class="control"><input id="iA" type="range" min="1000" max="10000000" step="1000" value="50000"><input id="iA_n" type="number" min="1000" max="10000000" step="1000" value="50000"></div></div>
+<div class="field"><div class="fieldtop"><label>Annual inflation rate</label><span class="value" id="iR_v"></span></div><div class="control"><input id="iR" type="range" min="0" max="15" step=".5" value="6"><input id="iR_n" type="number" min="0" max="15" step=".5" value="6"></div></div>
+<div class="field"><div class="fieldtop"><label>Years in future</label><span class="value" id="iY_v"></span></div><div class="control"><input id="iY" type="range" min="1" max="50" value="20"><input id="iY_n" type="number" min="1" max="50" value="20"></div></div></div>
+<div class="box"><h2>Impact of inflation</h2><div class="result"><span>Equivalent future amount</span><strong id="iFuture"></strong></div><div class="stats"><div class="stat"><span>Increase in rupees</span><b id="iInc"></b></div><div class="stat"><span>Multiple of today's amount</span><b id="iMult"></b></div></div><div class="tablewrap"><table><thead><tr><th>Year</th><th>Equivalent amount</th><th>Increase</th></tr></thead><tbody id="iTable"></tbody></table></div></div></div></section>
+<p class="disclaimer">Important: These calculators provide illustrative estimates only. They are not forecasts, guarantees or personalized investment advice. Returns are not guaranteed and market-linked investments can lose value. Taxes, fees and product-specific terms are excluded unless stated. Consult an appropriately qualified professional before making financial decisions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section with id="contact" -->
+<section class="cta" id="contact">
+ <div class="container">
+  <div class="cta-header-center">
+   <div class="eyebrow">Start with one conversation</div>
+   <h2>Your next BIG STEP starts here.</h2>
+   <p>Tell us where you are today, where you want to go, and we'll help you structure the journey.</p>
+  </div>
+
+  <div class="cta-grid">
+   <!-- Left Side: Contact Information Stacked -->
+   <div class="cta-left">
+    <div class="contact-stack">
+
+   <h2>Connect with us...</h2>
+
+
+     <!-- Email -->
+     <a class="contact-item" href="mailto:bigstepwealth@gmail.com" style="background: rgba(255,255,255,0.1);">
+       <span style="font-size: 16px;">✉️</span> bigstepwealth@gmail.com
+     </a>
+     
+     <!-- Telephone -->
+     <a class="contact-item" href="tel:+918939090555" style="background: rgba(255,255,255,0.1);">
+       <span style="font-size: 16px;">📞</span> +91 893 90 90 555
+     </a>
+     
+     <!-- WhatsApp -->
+     <a class="contact-item" href="https://wa.me/918939090555" target="_blank" style="background: #169c46;">
+       <span style="font-size: 16px;">💬</span> WhatsApp
+     </a>
+    </div>
+   </div>
+
+   <!-- Right Side: AMFI & Regulatory Details with Logo Image -->
+   <div class="cta-right">
+    <div class="amfi-badge-box">
+      <img src="amfi-logo.png" alt="AMFI Registered Mutual Fund Distributor Logo">
+    </div>
+    <h3>AMFI Registered Mutual Fund Distributor</h3>
+    <div class="arn-text">M CHITRA | ARN-331599</div>
+    <p>Mutual Fund investments are subject to market risks, read all scheme related documents carefully before investing. Past performance is not indicative of future returns.</p>
+    <div class="regulatory-links">
+     <div>Please write to <strong>SEBI - SCORES</strong> for any greivances related to Mutual Fund and Capital Market : <a href="https://scores.sebi.gov.in/" target="_blank">https://scores.sebi.gov.in/</a></div>
+     <div>Please go to <strong>SEBI - FILINGS</strong> for any Mutual Funds Draft, SAI, SID & KIM : <a href="https://www.sebi.gov.in/filings/mutual-funds.html" target="_blank">https://www.sebi.gov.in/filings/mutual-funds.html</a></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer id="login">
+ <div class="container footer-row">
+  <div><strong style="color:#fff">BIG STEP</strong> · Growth Creates Real Value</div>
+  <div>Invest · Protect · Plan · Grow &nbsp; | &nbsp; Privacy &nbsp; | &nbsp; Terms</div>
+ </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id), N=id=>Number($(id).value);
+const money=n=>Number.isFinite(n)?new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n):'—';
+const text=(id,v)=>$(id).textContent=v;
+function bind(id,fn){let r=$(id),n=$(id+'_n');let sync=(v)=>{if(v===''||!Number.isFinite(Number(v)))return;let x=Math.max(Number(r.min),Math.min(Number(r.max),Number(v)));r.value=x;n.value=x;fn()};r.addEventListener('input',()=>sync(r.value));n.addEventListener('input',()=>sync(n.value))}
+function bars(prefix,a,g){let t=Math.max(0,a+g);$(prefix+'BI').style.width=(t?Math.max(0,a/t*100):0)+'%';$(prefix+'BG').style.width=(t?Math.max(0,g/t*100):0)+'%'}
+function sip(){let m=N('sipM'),r=N('sipR')/1200,y=N('sipY'),n=y*12,f=r?m*(Math.pow(1+r,n)-1)/r:m*n,inv=m*n;['M','R','Y'].forEach((k,i)=>text('sip'+k+'_v',[money(m)+'/mo',N('sipR')+'%',y+' years'][i]));text('sipFV',money(f));text('sipInv',money(inv));text('sipGain',money(f-inv));bars('sip',inv,f-inv);let h='';for(let i=1;i<=y;i++){let v=r?m*(Math.pow(1+r,i*12)-1)/r:m*i*12;h+=`<tr><td>${i}</td><td>${money(m*i*12)}</td><td>${money(v)}</td></tr>`} $('sipTable').innerHTML=h}
+[['sipM',sip],['sipR',sip],['sipY',sip]].forEach(x=>bind(...x));
+function lump(){let a=N('lA'),r=N('lR')/100,y=N('lY'),f=a*Math.pow(1+r,y);text('lA_v',money(a));text('lR_v',N('lR')+'%');text('lY_v',y+' years');text('lFV',money(f));text('lInv',money(a));text('lGain',money(f-a));bars('l',a,f-a);let h='';for(let i=1;i<=y;i++){let v=a*Math.pow(1+r,i);h+=`<tr><td>${i}</td><td>${money(v)}</td><td>${money(v-a)}</td></tr>`}$('lTable').innerHTML=h}
+[['lA',lump],['lR',lump],['lY',lump]].forEach(x=>bind(...x));
+function swp(){let bal=N('sC'),w=N('sW'),r=N('sR')/100,y=N('sY'),inf=N('sI')/100,total=0,dep=0,h='';text('sC_v',money(bal));text('sW_v',money(w)+'/mo');text('sR_v',N('sR')+'%');text('sY_v',y+' years');text('sI_v',N('sI')+'%');for(let yr=1;yr<=y;yr++){let op=bal,wd=0;for(let m=1;m<=12;m++){bal*=Math.pow(1+r,1/12);let actual=Math.min(bal,w*Math.pow(1+inf,yr-1));bal-=actual;wd+=actual;total+=actual;if(bal<.01){bal=0;if(!dep)dep=yr;break}}h+=`<tr><td>${yr}</td><td>${money(op)}</td><td>${money(wd)}</td><td>${money(bal)}</td></tr>`;if(!bal)break}text('sEnd',money(bal));text('sTotal',money(total));text('sStatus',dep?'Depleted in year '+dep:'Balance remains');text('sNote',dep?`Under these assumptions the corpus is exhausted during year ${dep}. Actual market returns vary and are not constant.`:'The corpus remains at the end of the selected period under these assumptions. Actual outcomes can differ materially.');$('sTable').innerHTML=h}
+[['sC',swp],['sW',swp],['sR',swp],['sY',swp],['sI',swp]].forEach(x=>bind(...x));
+function retirement(){let exp=N('rE'),yrs=N('rY'),dur=N('rD'),inf=N('rI')/100,r=N('rR')/100,monthly=exp*Math.pow(1+inf,yrs),annual=monthly*12,corpus=0,h='';for(let i=1;i<=dur;i++){let a=annual*Math.pow(1+inf,i-1),pv=a/Math.pow(1+r,i);corpus+=pv;h+=`<tr><td>${i}</td><td>${money(a)}</td><td>${money(pv)}</td></tr>`}text('rE_v',money(exp)+'/mo');text('rY_v',yrs+' years');text('rD_v',dur+' years');text('rI_v',N('rI')+'%');text('rR_v',N('rR')+'%');text('rCorpus',money(corpus));text('rMonthly',money(monthly)+'/mo');text('rAnnual',money(annual));text('rNote',`Estimated corpus at retirement to fund ${dur} years of expenses, assuming expenses rise with inflation and the remaining corpus earns ${N('rR')}% annually. Expenses are modelled as annual withdrawals at year-end.`);$('rTable').innerHTML=h}
+[['rE',retirement],['rY',retirement],['rD',retirement],['rI',retirement],['rR',retirement]].forEach(x=>bind(...x));
+function cagr(){let a=N('cA'),b=N('cB'),y=N('cY');if(a<=0||b<0||y<=0){text('cResult','Check inputs');return}let rate=(Math.pow(b/a,1/y)-1)*100;text('cResult',Number.isFinite(rate)?rate.toFixed(2)+'%':'—');text('cGain',money(b-a));text('cTotal',((b/a-1)*100).toFixed(2)+'%')}
+$('cCalc').onclick=cagr;['cA','cB','cY'].forEach(id=>$(id).addEventListener('input',cagr));
+const dateNow=new Date(),ds=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+let flows=[{date:'2023-01-01',amount:-100000},{date:ds(dateNow),amount:143000}];
+function renderFlows(){let host=$('flows');host.innerHTML='';flows.forEach((f,i)=>{let row=document.createElement('div');row.className='cashflow';row.innerHTML=`<input type="date" value="${f.date}" aria-label="Date"><input type="number" step="any" value="${f.amount}" aria-label="Cash flow amount"><button type="button">×</button>`;row.children[0].onchange=e=>flows[i].date=e.target.value;row.children[1].oninput=e=>flows[i].amount=Number(e.target.value);row.children[2].onclick=()=>{if(flows.length>2){flows.splice(i,1);renderFlows()}else text('xNote','Keep at least two entries.')};host.appendChild(row)})}
+$('addFlow').onclick=()=>{flows.push({date:ds(new Date()),amount:0});renderFlows()};
+function npv(rate,arr){let start=Math.min(...arr.map(f=>new Date(f.date).getTime()));return arr.reduce((s,f)=>s+f.amount/Math.pow(1+rate,(new Date(f.date).getTime()-start)/(365.25*86400000)),0)}
+function xirr(){let arr=flows.filter(f=>f.date&&Number.isFinite(Number(f.amount))).map(f=>({...f,amount:Number(f.amount)})).sort((a,b)=>new Date(a.date)-new Date(b.date));if(!arr.some(f=>f.amount<0)||!arr.some(f=>f.amount>0)){text('xResult','Check cash flows');text('xNote','Enter at least one negative contribution and one positive receipt/current value.');return}let lo=-.9999,hi=1,fl=npv(lo,arr),fh=npv(hi,arr),i=0;while(fl*fh>0&&hi<1e6&&i++<100){hi=hi*2+.1;fh=npv(hi,arr)}if(fl*fh>0){text('xResult','No solution');text('xNote','These cash flows may not have a unique solvable XIRR. Check dates and signs.');return}for(let j=0;j<250;j++){let mid=(lo+hi)/2,fm=npv(mid,arr);if(Math.abs(fm)<1e-7){lo=hi=mid;break}if(fl*fm<=0){hi=mid;fh=fm}else{lo=mid;fl=fm}}let rate=(lo+hi)/2;text('xResult',(rate*100).toFixed(2)+'%');text('xNet',money(arr.reduce((s,f)=>s+f.amount,0)));text('xCount',arr.length);text('xNote','Uses actual date differences on a 365.25-day year. Cash-flow patterns with multiple sign changes can have multiple mathematical solutions.')}
+$('xCalc').onclick=xirr;renderFlows();
+function goal(){let a=N('gA'),y=N('gY'),inf=N('gI')/100,r=N('gR')/1200,c=N('gC'),future=a*Math.pow(1+inf,y),cfv=c*Math.pow(1+N('gR')/100,y),need=Math.max(0,future-cfv),n=y*12,sip=r?need*r/(Math.pow(1+r,n)-1):need/n;text('gA_v',money(a));text('gY_v',y+' years');text('gI_v',N('gI')+'%');text('gR_v',N('gR')+'%');text('gC_v',money(c));text('gSIP',money(sip)+'/mo');text('gFuture',money(future));text('gCFV',money(cfv));text('gNote',cfv>=future?'Existing savings could reach the projected goal under these assumptions; no additional SIP is mathematically required in this simplified model.':'Assumes monthly contributions at month-end and a constant monthly rate derived from the annual return. Taxes, fees and market volatility are excluded.')}
+[['gA',goal],['gY',goal],['gI',goal],['gR',goal],['gC',goal]].forEach(x=>bind(...x));
+function inflation(){let a=N('iA'),r=N('iR')/100,y=N('iY'),f=a*Math.pow(1+r,y);text('iA_v',money(a));text('iR_v',N('iR')+'%');text('iY_v',y+' years');text('iFuture',money(f));text('iInc',money(f-a));text('iMult',(f/a).toFixed(2)+'×');let h='';for(let i=1;i<=y;i++){let v=a*Math.pow(1+r,i);h+=`<tr><td>${i}</td><td>${money(v)}</td><td>${money(v-a)}</td></tr>`}$('iTable').innerHTML=h}
+[['iA',inflation],['iR',inflation],['iY',inflation]].forEach(x=>bind(...x));
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab))});
+[sip,lump,swp,retirement,cagr,goal,inflation].forEach(f=>f());xirr();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const dropdown = document.getElementById("frameworksDropdown");
+    const toggle = document.getElementById("frameworksToggle");
+
+    if (!dropdown || !toggle) return;
+
+    // Toggle dropdown on click
+    toggle.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const isOpen = dropdown.classList.toggle("is-open");
+
+        toggle.setAttribute("aria-expanded", isOpen);
+
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+
+        if (!dropdown.contains(event.target)) {
+
+            dropdown.classList.remove("is-open");
+
+            toggle.setAttribute("aria-expanded", "false");
+
+        }
+
+    });
+
+    // Close dropdown when pressing Escape
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            dropdown.classList.remove("is-open");
+
+            toggle.setAttribute("aria-expanded", "false");
+
+            toggle.focus();
+
+        }
+
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BIG STEP | L.I.F.E Framework</title>
+<style>
+
+:root {
+    --navy: #102b46;
+    --navy2: #173b5d;
+    --gold: #c9a45c;
+    --gold2: #f0d99e;
+    --ink: #172b3a;
+    --muted: #667786;
+    --paper: #f4f7fa;
+    --line: #e1e8ee;
+    --white: #fff;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 15px/1.55 Inter, ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Existing L.I.F.E hero header */
+header {
+    background: linear-gradient(120deg, #0c2239, #183e5d);
+    color: #fff;
+    padding: 26px max(22px, calc((100vw - 1240px) / 2)) 34px;
+    border-bottom: 4px solid var(--gold);
+}
+.hero { max-width: 1240px; margin: 30px auto 0; padding: 0 22px; }
+.eyebrow {
+    color: var(--gold2);
+    font-weight: 750;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.hero h1 {
+    font-size: clamp(30px, 4.2vw, 52px);
+    line-height: 1.06;
+    margin: 8px 0 12px;
+    max-width: 760px;
+}
+.hero p { color: #d9e3eb; max-width: 690px; margin: 0; }
+
+/* Existing BIG STEP navigation */
+.bs-site-nav {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e6e9ee;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    font-family: Inter, Arial, sans-serif;
+}
+.bs-site-nav-inner {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-sizing: border-box;
+}
+.bs-site-brand {
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    font-size: 28px;
+    line-height: .8;
+    white-space: nowrap;
+    color: #10243e;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+.bs-site-brand small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #c6a15b;
+    margin-top: 7px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+.bs-site-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 14px;
+    color: #42536a;
+    white-space: nowrap;
+    margin-left: auto;
+    line-height: 1.2;
+}
+.bs-site-links a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+.bs-site-links a:hover { color: #c6a15b; }
+.bs-site-links .bs-site-cta {
+    background: #10243e;
+    color: #fff;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    min-height: 48px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.bs-site-links .bs-site-cta:hover { color: #fff; background: #17365d; }
+
+/* Frameworks dropdown – click to open */
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+.dropdown-toggle::after {
+    content: "▾";
+    font-size: 11px;
+    display: inline-block;
+    transition: transform .2s ease;
+}
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -12px;
+    min-width: 240px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(16, 36, 62, .12);
+    padding: 8px 0;
+    z-index: 1000;
+    transform: translateY(6px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+.dropdown.is-open .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.dropdown.is-open .dropdown-toggle::after { transform: rotate(180deg); }
+.dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+    transition: background .2s ease, color .2s ease;
+}
+.dropdown-menu a:hover { background: #f4f7fa; color: var(--gold); }
+.dropdown-toggle:focus-visible,
+.dropdown-menu a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* Access restricted display */
+.access-restricted-wrap {
+    max-width: 1240px;
+    min-height: 390px;
+    margin: 28px auto 70px;
+    padding: 40px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.access-restricted-card {
+    width: min(100%, 680px);
+    padding: 48px 36px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(16, 43, 70, .08);
+}
+.access-restricted-icon {
+    width: 66px;
+    height: 66px;
+    margin: 0 auto 22px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #f8f1e3;
+    color: var(--gold);
+    font-size: 29px;
+}
+.access-restricted-card h2 {
+    margin: 0 0 12px;
+    color: var(--navy);
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.2;
+}
+.access-restricted-card p {
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+.access-restricted-note {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    background: #f1f5f8;
+    color: #526779;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+/* Existing footer */
+footer {
+    background: #0b2035;
+    color: #c6d2dc;
+    padding: 22px;
+    text-align: center;
+    font-size: 11px;
+}
+footer strong { color: var(--gold2); }
+
+@media (max-width: 850px) {
+    .bs-site-nav { height: auto; min-height: 78px; }
+    .bs-site-nav-inner { min-height: 78px; padding: 14px 20px; gap: 16px; }
+    .bs-site-links { gap: 14px; font-size: 13px; }
+    .bs-site-links a:not(.bs-site-cta) { display: none; }
+    .bs-site-links .bs-site-cta { padding: 10px 16px; min-height: 42px; }
+}
+@media (max-width: 560px) {
+    .hero { padding-left: 14px; padding-right: 14px; }
+    .access-restricted-wrap { min-height: 330px; padding: 28px 14px; }
+    .access-restricted-card { padding: 36px 22px; }
+}
+
+</style>
+</head>
+<body>
+<nav class="bs-site-nav" aria-label="Main navigation">
+  <div class="bs-site-nav-inner">
+    <a class="bs-site-brand" href="mainpage.html">BIG STEP<small>GROWTH CREATES REAL VALUE</small></a>
+    <div class="bs-site-links">
+      <a href="mainpage.html#about">About</a>
+      <a href="mainpage.html#services">Services</a>
+
+      <!-- Frameworks Dropdown Menu -->
+<div class="dropdown" id="frameworksDropdown">
+
+    <a href="#" 
+       class="dropdown-toggle"
+       id="frameworksToggle"
+       role="button"
+       aria-haspopup="true"
+       aria-expanded="false">
+        Frameworks
+    </a>
+
+    <div class="dropdown-menu" id="frameworksMenu">
+
+        <a href="ACTIVE.html">
+            A.C.T.I.V.E Investment Approach
+        </a>
+
+        <a href="POLICY.html">
+            P.O.L.I.C.Y Checklist
+        </a>
+
+        <a href="LIFE_Access_Restricted.html">
+            L.I.F.E Retirement Planner
+        <span>&#128274;</span></a>
+
+    </div>
+
+</div>
+
+      <a href="HEATMAP.HTML">Heat Map</a>
+
+      <a href="mainpage.html#tools">Calculators</a>
+      <a href="mainpage.html#contact">Contact</a>
+      <a class="bs-site-cta" href="mainpage.html#contact">Get Started</a>
+    </div>
+  </div>
+</nav>
+<header>
+<div class="hero"><div class="eyebrow">Retirement income planning</div><h1>BIGSTEP <span style="color:var(--gold2)">L.I.F.E</span> Framework</h1><p><b><span style="color:var(--gold2)">LIFETIME INCOME · FUTURE EQUITY</span></b><br>
+A distinctive Retirement Planning and Systematic Withdrawal Framework designed to go beyond Traditional SWPs - balancing retirement income with long-term wealth sustainability to help your corpus endure beyond your expected lifetime and preserve a potential legacy for future generations.</p></div></header>
+<main class="access-restricted-wrap">
+    <section class="access-restricted-card" aria-labelledby="accessRestrictedTitle">
+        <div class="access-restricted-icon" aria-hidden="true">🔒</div>
+        <h2 id="accessRestrictedTitle">Access is Restricted</h2>
+        <p>
+            This section is currently available to authorised users only.
+            Please contact BIG STEP for more information or assistance with access.
+        </p>
+        <span class="access-restricted-note">BIG STEP · L.I.F.E RETIREMENT PLANNER</span>
+    </section>
+</main><footer><strong>BIG STEP</strong> · Growth Creates Real Value · BIGSTEP L.I.F.E Framework<br>For education and planning illustration only. Past or assumed returns do not guarantee future results.</footer>
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const dropdown = document.getElementById("frameworksDropdown");
+    const toggle = document.getElementById("frameworksToggle");
+
+    if (!dropdown || !toggle) return;
+
+    // Toggle dropdown on click
+    toggle.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        const isOpen = dropdown.classList.toggle("is-open");
+
+        toggle.setAttribute("aria-expanded", isOpen);
+
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+
+        if (!dropdown.contains(event.target)) {
+
+            dropdown.classList.remove("is-open");
+
+            toggle.setAttribute("aria-expanded", "false");
+
+        }
+
+    });
+
+    // Close dropdown when pressing Escape
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            dropdown.classList.remove("is-open");
+
+            toggle.setAttribute("aria-expanded", "false");
+
+            toggle.focus();
+
+        }
+
+    });
+
+});
+</script>
+</body></html>
